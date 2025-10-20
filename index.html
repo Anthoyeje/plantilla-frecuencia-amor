@@ -134,6 +134,18 @@
             transition: width 0.1s ease;
         }
 
+        #status-message {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1000;
+            color: #ff69b4;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.5s;
+            font-family: 'Dosis', sans-serif;
+        }
+
         #main-title {
             position: fixed;
             top: 25px;
@@ -207,23 +219,22 @@
 
         .button-container { display: flex; gap: 10px; }
         .control-btn {
-            background: rgba(255, 20, 147, 0.15); /* Changed to hot pink for another color */
+            background: rgba(255, 20, 147, 0.15);
             border: 1px solid rgba(255, 20, 147, 0.7);
             width: 45px;
             height: 45px;
-            color: #ff1493; /* Adjusted text color to match */
+            color: #ff1493;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             text-shadow: 0 0 8px #ff1493;
-            position: relative;
         }
         .control-btn svg {
             width: 18px;
             height: 18px;
-            fill: #ff1493; /* Changed fill color */
+            fill: #ff1493;
             transition: all 0.3s ease;
         }
         .control-btn:hover:not(:disabled) {
@@ -315,7 +326,6 @@
             padding: 5px;
             opacity: 0.7;
             transition: opacity 0.3s ease;
-            position: relative;
         }
         .minimize-btn:hover {
             opacity: 1;
@@ -328,13 +338,13 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: #ff5f57; /* Red like Apple close */
+            background: #ff5f57;
         }
         .traffic-light .dot:nth-child(2) {
-            background: #ffbd2e; /* Yellow like Apple minimize */
+            background: #ffbd2e;
         }
         .traffic-light .dot:nth-child(3) {
-            background: #28ca42; /* Green like Apple maximize */
+            background: #28ca42;
         }
         
         .panel-content {
@@ -434,73 +444,6 @@
             100% { top: 100%; }
         }
 
-        /* Etiqueta HOT Flotante */
-        .floating-label {
-            position: absolute;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1em;
-            color: white;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-block;
-            z-index: 2000;
-        }
-
-        .floating-label:hover {
-            transform: scale(1.1) translateY(-5px);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Flecha señalando ABAJO */
-        .arrow-down::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid;
-            border-top-color: #fee140;
-        }
-
-        .label-orange {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-
-        .label-start {
-            background: linear-gradient(135deg, #ff69b4 0%, #ffc0cb 100%);
-        }
-
-        .label-start::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid;
-            border-top-color: #ffc0cb;
-        }
-
-        .floating-label.hidden {
-            display: none;
-        }
-
         @media (max-width: 768px) {
             #main-title {
                 font-size: 1.5em;
@@ -591,7 +534,7 @@
     <div id="guide-text">🡸 Deslice para los costados 🡺</div>
 
     <div id="loading">
-        <div>Cargando</div>
+        <div id="loading-text">Iniciando</div>
         <div id="loading-bar"><div id="loading-fill"></div></div>
     </div>
 
@@ -614,8 +557,6 @@
                     <div class="dot"></div>
                 </div>
             </button>
-            <!-- Etiqueta HOT Flotante para Configuración -->
-            <div id="config-guide" class="floating-label label-orange arrow-down">HOT 🔥</div>
         </div>
         <div class="panel-content">
             <div class="data-row">
@@ -666,8 +607,6 @@
         <div class="button-container">
           <button id="play-btn" class="control-btn" disabled title="Play Our Song">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-            <!-- Etiqueta para Play -->
-            <div id="play-guide" class="floating-label label-start arrow-down">COMENZAR</div>
           </button>
           <button id="pause-btn" class="control-btn" disabled title="Pause">
             <svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/></svg>
@@ -688,6 +627,7 @@
     }
     </script>
 
+  
     <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2A1-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
 <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2A2-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
 <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2A3-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
@@ -1125,7 +1065,6 @@
 <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2C4-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
 <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2C5-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
 <script type="module" src="confiHitgup/js/4f8a9d7c-21b3-4f6a-88a9-c7d6f5e4a3b2-9fA7b6C5d4E3f2D5-1a2b3c4d5e6f7g8h9i0jK1L2M3N4O5P6Q7R8S9T0UvWxYzZ1A2B3C4D5E6F7G8H9I0J.js"></script>
-  
   
 </body>
 </html>
